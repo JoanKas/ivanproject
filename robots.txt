@@ -1,0 +1,4 @@
+User-agent: *
+Host: www.ivanproject.ru
+SiteMap: http://ivanproject.ru/sitemap.xml
+Disallow: /admin
