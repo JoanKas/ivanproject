@@ -1,2 +1,2 @@
 <?php
-echo "hello";
+$DB_connect = new db();

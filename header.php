@@ -1,4 +1,9 @@
 <?php
+function __autoload($name){
+    require_once ('libs/classes/'.$name.'.php');
+}
+
+
 require_once 'views/vcontent.php';
 ?>
 <!DOCTYPE html>
