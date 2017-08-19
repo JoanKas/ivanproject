@@ -1,2 +1,3 @@
+<body>
 <?php
-$DB_connect = new db();
+$connect = new app\classes\Db();
