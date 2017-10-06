@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Сен 02 2017 г., 18:07
--- Версия сервера: 10.1.16-MariaDB
--- Версия PHP: 7.0.9
+-- Время создания: Окт 06 2017 г., 19:53
+-- Версия сервера: 10.1.26-MariaDB
+-- Версия PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -37,6 +39,14 @@ CREATE TABLE `pages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Страницы';
 
 --
+-- Дамп данных таблицы `pages`
+--
+
+INSERT INTO `pages` (`id`, `menu_name`, `content`, `title`, `description`, `visible`, `visible_in_main_menu`) VALUES
+(1, 'Главная', 'Главная страница', 'Главная', 'Главная', '1', '1'),
+(2, 'Новости', 'Новости', 'Новости', 'Новости', '1', '1');
+
+--
 -- Индексы сохранённых таблиц
 --
 
@@ -54,7 +64,8 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
