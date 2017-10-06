@@ -1,9 +1,9 @@
 <?php
+
 function __autoload($name){
     require_once ($name.'.php');
 }
 
-require_once 'public/Vcontent.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">

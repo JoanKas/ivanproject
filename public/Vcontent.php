@@ -1,6 +1,7 @@
 <?php
 $id = $_GET['id'];
-$vcontent = new Ccontent();
+$vcontent = new app\classes\Ccontent();
 $page = array();
 $page = $vcontent->print_content($id);
+echo $page['content'];
 ?>

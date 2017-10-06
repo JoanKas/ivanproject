@@ -1,5 +1,5 @@
 <body>
 <?php
 // создаём объекты
-$connect = new app\classes\Db();
+require_once "public/Vcontent.php";
 

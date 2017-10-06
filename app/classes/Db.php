@@ -27,7 +27,6 @@ class Db extends Config
         {
             die("Ошибка соединения с базой данных: ". mysqli_error());
         }
-        echo "подключились к  БД";
         // установка принудительной кодировки UTF-8
         mysqli_query($this->connection, "set names utf8") or die ("set names utf8 failed");
     }
@@ -42,6 +41,7 @@ class Db extends Config
         {
             die ("Ошибка запроса к базе данных: ". mysqli_error());
         }
+
         return $result;
     }
 
