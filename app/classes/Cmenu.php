@@ -19,7 +19,8 @@ class Cmenu extends Mmenu
         {
             $menu[$row['id']] = $row;
         }
-        var_export($menu);
+
+        return $menu;
 
 
     }
