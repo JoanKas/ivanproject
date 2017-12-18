@@ -15,8 +15,8 @@ class Mmenu extends Db
     {
 
         $sql = "SELECT id, menu_name FROM pages WHERE  visible_in_main_menu= '1'";
-
-        $res = $this->sql($sql);
-        return $res;
+        $res = \app\classes\Db::connect_to_db();
+        $res2 = $res->sql($sql);
+        return $res2;
     }
 }

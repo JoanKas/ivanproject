@@ -10,12 +10,26 @@ namespace app\classes;
 
 class Db extends Config
 {
+    private static $mydbobject;
     private $connection; // идентефикатор соединения
 
     // открываем соединение с сервером БД
     public function  __construct()
     {
-        $this->open_connection();
+
+    }
+
+    public static function connect_to_db()
+    {
+        if (!self::$mydbobject)
+        {
+            self::$mydbobject = new \app\classes\Db();
+            self::$mydbobject->open_connection();
+        }
+        else
+        {
+            return self::$mydbobject;
+        }
     }
 
     private function open_connection()
@@ -26,6 +40,10 @@ class Db extends Config
         if (!$this->connection)
         {
             die("Ошибка соединения с базой данных: ". mysqli_error());
+        }
+        else
+        {
+            echo "Соединение с БД установлено";
         }
         // установка принудительной кодировки UTF-8
         mysqli_query($this->connection, "set names utf8") or die ("set names utf8 failed");
