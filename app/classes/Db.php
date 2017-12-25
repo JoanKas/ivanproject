@@ -3,7 +3,7 @@ namespace app\classes;
 
 /**
  * @filename DB.php
- * набор компонентов для работы с БД
+ * набор компонентов для работы с БД (Singleton)
  * @author Любомир Пона
  * @copyright 24.09.2013
  * @updated 25.12.2017
@@ -14,22 +14,27 @@ class Db extends Config
     private static $instance = null; // объект для работы с БД
     private static $handler; // идентефикатор соединения
 
-    private function  __construct(){}
+    // закрываем возможность создания и дублирования объектов
+    private function  __construct()
+    {
+        $this->open_connection();
+    }
     private function __clone(){}
     private function __wakeup(){}
 
+    // объект для бароты с БД
     public static function getInstance()
     {
         if (self::$instance === null)
         {
            self::$instance = new self;
-           self::$instance->open_connection();
         }
 
         return self::$instance;
 
     }
 
+    // соединяемся с БД
     private function open_connection()
     {
         self::$handler = mysqli_connect(self::DB_HOST, self::DB_USER, self::DB_PASS, self::DB_NAME);
