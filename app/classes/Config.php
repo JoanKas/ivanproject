@@ -3,9 +3,9 @@ namespace app\classes;
 
     class Config
     {
-        protected $DB_HOST = "localhost"; // адрес сервера БД
-        protected $DB_USER = "php"; // имя пользователя 
-        protected $DB_PASS = "12345"; // пароль пользователя
-        protected $DB_NAME = "ivanproject"; // название БД
-        protected $SQLCHARSET = "utf8"; // кодировка БД
+        const DB_HOST = "localhost"; // адрес сервера БД
+        const DB_USER = "php"; // имя пользователя
+        const DB_PASS = "12345"; // пароль пользователя
+        const DB_NAME = "ivanproject"; // название БД
+        const SQLCHARSET = "utf8"; // кодировка БД
     }

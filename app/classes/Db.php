@@ -6,38 +6,36 @@ namespace app\classes;
  * набор компонентов для работы с БД
  * @author Любомир Пона
  * @copyright 24.09.2013
+ * @updated 25.12.2017
  */
 
 class Db extends Config
 {
-    private static $mydbobject;
-    private $connection; // идентефикатор соединения
+    private static $instance = null; // объект для работы с БД
+    private static $handler; // идентефикатор соединения
 
-    // открываем соединение с сервером БД
-    public function  __construct()
+    private function  __construct(){}
+    private function __clone(){}
+    private function __wakeup(){}
+
+    public static function getInstance()
     {
-
-    }
-
-    public static function connect_to_db()
-    {
-        if (!self::$mydbobject)
+        if (self::$instance === null)
         {
-            self::$mydbobject = new \app\classes\Db();
-            self::$mydbobject->open_connection();
+           self::$instance = new self;
+           self::$instance->open_connection();
         }
-        else
-        {
-            return self::$mydbobject;
-        }
+
+        return self::$instance;
+
     }
 
     private function open_connection()
     {
-        $this->connection = mysqli_connect($this->DB_HOST, $this->DB_USER, $this->DB_PASS, $this->DB_NAME);
+        self::$handler = mysqli_connect(self::DB_HOST, self::DB_USER, self::DB_PASS, self::DB_NAME);
 
         // если соединение не открыто, выдаем сообщение об ошибке
-        if (!$this->connection)
+        if (!self::$handler)
         {
             die("Ошибка соединения с базой данных: ". mysqli_error());
         }
@@ -46,13 +44,13 @@ class Db extends Config
             echo "Соединение с БД установлено";
         }
         // установка принудительной кодировки UTF-8
-        mysqli_query($this->connection, "set names utf8") or die ("set names utf8 failed");
+        mysqli_query(self::$handler, "set names utf8") or die ("set names utf8 failed");
     }
 
     // реализация запроса к БД
     public function sql($query)
     {
-        $result = mysqli_query($this->connection, $query);
+        $result = mysqli_query(self::$handler, $query);
 
         // если запрос не удался, выдаем сообщение об ошибке
         if (!$result)
@@ -63,11 +61,6 @@ class Db extends Config
         return $result;
     }
 
-    // закрываем соединение с сервером БД
-    public function  __destruct()
-    {
-        mysqli_close($this->connection);
-    }
 }
 ?>
 
