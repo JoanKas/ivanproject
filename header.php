@@ -4,6 +4,21 @@ function __autoload($name){
     require_once ($name.'.php');
 }
 
+// Если зашли на сайт впервые
+if(!$_GET)
+{
+    $id = 1;
+}
+else
+{
+    $id = $_GET['id'];
+}
+
+// создаём объекты
+$vcontent = new app\classes\Ccontent();
+$page = array();
+$page = $vcontent->print_content($id);
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 06 2017 г., 19:53
+-- Время создания: Дек 25 2017 г., 14:33
 -- Версия сервера: 10.1.26-MariaDB
 -- Версия PHP: 7.1.8
 
@@ -44,7 +44,9 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`id`, `menu_name`, `content`, `title`, `description`, `visible`, `visible_in_main_menu`) VALUES
 (1, 'Главная', 'Главная страница', 'Главная', 'Главная', '1', '1'),
-(2, 'Новости', 'Новости', 'Новости', 'Новости', '1', '1');
+(2, 'Новости', 'Новости сайта', 'Новости ', 'Новости', '1', '1'),
+(3, 'Контакты', 'Контакты', 'Контакты', 'Контакты', '1', '1'),
+(4, 'Фотогалерея', '<img src=\"public/img/1.png\">', 'Фотогалерея', 'Фотогалерея', '1', '1');
 
 --
 -- Индексы сохранённых таблиц
@@ -64,7 +66,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
